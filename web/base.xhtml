@@ -6,23 +6,39 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <title>PCNO</title>
     </h:head>
 
     <h:body>
 
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
-        </div>
+        <h:form>
+            <div id="top">
+                <div>
+                    <div id="logoTop">
+                        <img src="resources/imagens/logo pcno.png" alt="logo"/>
+                    </div>
+                    <div>
+                        <h:commandLink value="Início" class="textoVermelho"/>
+                        <h:commandLink value="Produtos" class="tituloTopo"/>
+                        <h:commandLink value="Carrinho" class="tituloTopo"/>
+                        <h:commandLink value="Cadastrar" class="tituloTopo"/>
+                        <h:commandLink value="Login" class="textoVermelho"/>
+                    </div>
+                </div>
+            </div>
+        </h:form>
 
         <div id="content" class="center_content">
             <ui:insert name="content">Content</ui:insert>
         </div>
 
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            <ui:insert name="bottom"></ui:insert>
+            <p class="tituloBottom">Suporte</p>
+            <p>suporte@gmail.com</p>
+            <p>(47)99999-1111</p>
         </div>
 
     </h:body>

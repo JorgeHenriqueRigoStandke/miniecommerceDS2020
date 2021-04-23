@@ -1,61 +1,101 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
-    color: white;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
+    background-color: black;
+    padding: 50px;
+    text-align: center;
+    height: 8.5vh;
 }
 
 #bottom {
     position: relative;
-    background-color: #c2dfef;
+    background-color: black;
     padding: 5px;
+    top: -10px;
     margin: 10px 0px 0px 0px;
+    color: white;
+    text-align: center;
 }
 
-#left {
-    float: left;
-    background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
+#logoTop img{
+    position: absolute;
+    height: 70px;
+    width: 200px;
+    left: 100px;
+    top: 50px;
 }
 
-#right {
-    float: right;
-    background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
+.textoVermelho{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 45px;
+    font-size: 45px;
+}
+
+.tituloTopo{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 45px;
+    font-size: 45px;
+}
+
+#index{
+    color: red;
+    background-color: #333436;
+}
+
+#logoIndex{
+    height: 240px;
+    margin-left: 110px;
+    margin-top: -180px;
+    margin-bottom: 30px;
+}
+
+#imagemCentral{
+    width: 1800px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+#textoIndex{
+    font-size: 60px;
+    text-align: center;
+    margin-left: 210px;
+}
+
+.tituloBottom{
+    color: white;
+    font-weight: bold;
+    text-align: center;
 }
 
 .center_content {
     position: relative;
-    background-color: #dddddd;
+    background-color: #333436;
     padding: 5px;
 }
 
 .left_content {
-    background-color: #dddddd;
+    background-color: #333436;
     padding: 5px;
     margin-left: 170px;
 }
 
 .right_content {
-    background-color: #dddddd;
+    background-color: #333436;
     padding: 5px;
     margin: 0px 170px 0px 170px;
 }
 
 #top a:link, #top a:visited {
-  color: white;
   font-weight : bold;
   text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
+  color: red;
   font-weight : bold;
   text-decoration : underline;
 }
-
-
