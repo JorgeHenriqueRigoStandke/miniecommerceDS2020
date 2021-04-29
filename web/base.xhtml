@@ -20,11 +20,11 @@
                         <img src="resources/imagens/logo pcno.png" alt="logo"/>
                     </div>
                     <div>
-                        <h:commandLink value="Início" class="textoVermelho"/>
-                        <h:commandLink value="Produtos" class="tituloTopo"/>
-                        <h:commandLink value="Carrinho" class="tituloTopo"/>
-                        <h:commandLink value="Cadastrar" class="tituloTopo"/>
-                        <h:commandLink value="Login" class="textoVermelho"/>
+                        <h:commandLink value="Início" class="textoVermelho" action="#{paginasMB.getPaginaInicio()}"/>
+                        <h:commandLink value="Produtos" class="tituloTopo" action="#{paginasMB.getPaginaListaProdutos()}"/>
+                        <h:commandLink value="Carrinho" class="tituloTopo" action="#{paginasMB.getPaginaCarrinho()}"/>
+                        <h:commandLink value="Cadastrar" class="tituloTopo" action="#{paginasMB.getPaginaCadastroClientes()}"/>
+                        <h:commandLink value="Login" class="textoVermelho" action="#{paginasMB.getPaginaLoginCliente()}"/>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller.managebeans;
 
 import javax.inject.Named;
@@ -16,10 +11,46 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class PaginasMB {
 
-    /**
-     * Creates a new instance of PaginasMB
-     */
     public PaginasMB() {
     }
     
+    public String getPaginaInicio() {
+        return "index";
+    }
+    
+    public String getPaginaCadastroProdutos() {
+        return "adminCadastroProdutos";
+    }
+    
+    public String getPaginaVisaoGeral() {
+        return "adminVisaoGeral";
+    }
+    
+    public String getPaginaCadastroClientes() {
+        return "cadastroCliente";
+    }
+    
+    public String getPaginaCarrinho() {
+        return "carrinho";
+    }
+    
+    public String getPaginaDetalhesProdutos() {
+        return "detalhesProdutos";
+    }
+    
+    public String getPaginaFuncoesAdmin() {
+        return "funcoesAdmin";
+    }
+    
+    public String getPaginaListaProdutos() {
+        return "listaProdutos";
+    }
+    
+    public String getPaginaLoginAdmin() {
+        return "loginAdmin";
+    }
+    
+    public String getPaginaLoginCliente() {
+        return "loginCliente";
+    }
 }
