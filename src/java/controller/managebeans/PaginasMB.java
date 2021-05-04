@@ -1,6 +1,6 @@
 package controller.managebeans;
 
-/*@author Felipe Girardi Macedo*/
+/*@author João Vitor Schmidt*/
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;

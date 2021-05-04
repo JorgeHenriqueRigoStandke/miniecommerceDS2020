@@ -7,22 +7,26 @@
 
     <ui:define name="content">
         <h:form>
+            <p:growl id="mensagem" showDetail="true" sticky="true"/>
+
+            <h:inputHidden value="#{produtoB.id}"/>
+
             <p id="textoCadastroProdutos">Área de Cadastro de Produtos</p>
             <img id="logoCadasroProdutos" src="resources/imagens/logo 2.png" alt="logo"/>
             <div class="camposCadastro">
                 <div>
                     <h4>Identificação*:</h4>
-                    <p:inputText/>
+                    <p:inputText value="#{produtoB.identificacao}"/>
                 </div>
                 <div>
                     <h4>Preço*:</h4>
-                    <p:inputText/>
+                    <p:inputMask value="#{produtoB.preco}" mask="9999"/>
                 </div>
                 <div>
                     <h4>Descrição do Produto*:</h4>
-                    <p:inputText/>
+                    <p:inputText value="#{produtoB.descricao}"/>
                 </div>
-                
+
                 <div class="card">
                     <h:form enctype="multipart/form-data">
                         <h4>Imagem*:</h4>
@@ -31,7 +35,7 @@
                     </h:form>
                 </div>
                 <br/>
-                <p:commandButton class="btnCadSalvar" ajax="false" value="Cadastrar"/>
+                <p:commandButton class="btnCadSalvar" ajax="false" value="Cadastrar" action="#{produtoB.salvarProduto()}"/>
             </div>
         </h:form>
     </ui:define>

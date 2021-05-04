@@ -15,14 +15,14 @@
             <div id="camposLogin">
                 <span>
                     <h4>Email</h4>
-                    <p:inputText value="#{cadastroMB.email}"/>
+                    <p:inputText value="#{usuarioB.email}"/>
                 </span>
                 <span>
                     <h4>Senha</h4>
-                    <p:inputText value="#{cadastroMB.senha}"/>
+                    <p:inputText value="#{usuarioB.senha}"/>
                 </span>
                 <br/>
-                <p:commandButton value="Login" class="btnLoginAdmin"/>
+                <p:commandButton value="Login" class="btnLoginAdmin" action="#{usuarioB.loginCliente()}"/>
             </div>
             
             <div id="textoLateralLogin">
