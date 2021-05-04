@@ -1,10 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./base.xhtml">
+                template="./base.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        content
+        <h:form>
+            
+            <div id="cadeiraGamer">
+                <img src="resources/imagens/Cadeira Gamer Mud Racer.png" alt="logo" id="logoGrande"/>
+                <h4>Cadeira Gamer Mud Racer 10</h4>
+                <p:commandButton value="Ver o produto" id="detalhesCadeira" action="#{paginasMB.paginaDetalhesProdutos()}"/>
+            </div>
+            <div id="placaVideo">
+                <img src="resources/imagens/Placa de Video Nvidia 1660 Super.png" alt="logo" id="logoGrande"/>
+                <h4>Placa de Vídeo GTX 1660 Super</h4>
+                <p:commandButton value="Ver o produto" id="detalhesPlaca" action="#{paginasMB.paginaDetalhesProdutos()}"/>
+            </div>
+            <div id="fonte">
+                <img src="resources/imagens/Fonte de Energia 80 plus 750W.png" alt="logo" id="logoGrande"/>
+                <h4>Fonte de Energia 80 Plus 750W</h4>
+                <p:commandButton value="Ver o produto" id="detalhesFonte" action="#{paginasMB.paginaDetalhesProdutos()}"/>
+            </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>
