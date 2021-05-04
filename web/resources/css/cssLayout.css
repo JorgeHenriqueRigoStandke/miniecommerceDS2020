@@ -36,6 +36,29 @@
     font-size: 1.25vw;
     color: #fff;
 }
+
+.btnLoginAdmin{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: auto;
+    height: auto;
+    background: red;
+    top: 70%;
+    font-size: 0.90vw;
+    color: #fff;
+}
+
+.btnVerProduto{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: auto;
+    height: 2.25vw;
+    background: red;
+    top: 70%;
+    left: 4%;
+    font-size: 1.25vw;
+    color: #fff;
+}
 /*----------------------------- Final CSS Botões -----------------------------*/
 
 #logoTop img{
@@ -44,20 +67,6 @@
     width: 200px;
     left: 100px;
     top: 50px;
-}
-
-.camposCadastro{
-    position: relative;
-    left:45%;
-    top: 30%;
-    margin-bottom: 5%;
-    color: white;
-    font-size: 0.85vw;
-}
-
-#index{
-    color: red;
-    background-color: #333436;
 }
 
 #logoIndex{
@@ -87,9 +96,111 @@
     margin-bottom: 30px;
 }
 
+#imagemCentro{
+    height: 240px;
+    margin-left: 350px;
+    margin-bottom: 30px;
+}
+
+.imgDetalhesProduto{
+    margin-left: 5%;
+}
 /*----------------------------- Final CSS Imagens -----------------------------*/
 
+.camposCadastro{
+    position: relative;
+    left:45%;
+    top: 30%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+}
+
+#camposCadastroEsquerdo{
+    position: relative;
+    left:0;
+    top: 30%;
+    margin-left: 30%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+    text-decoration: none;
+}
+
+#camposCadastroDireito{
+    position: absolute;
+    right: 0;
+    top: 30%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+    text-decoration: none;
+}
+
+#camposLogin{
+    position: relative;
+    left:48%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+}
+
+.textoProduto{
+    font-size: 30px;
+    margin-left: 5%;
+    color: red;
+}
+
+#finalizacaoProduto{
+    position: absolute;
+    text-align: center;
+    margin-right: 5%;
+    left: 70%;
+    top: 0;
+    margin-top: 20%;
+}
+
+.spinnerQtde{
+    margin-left: -50%;
+}
+
+.detalhesProduto{
+    position: relative;
+    left:5%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+}
+
+.precoProduto{
+    font-size: 30px;
+    margin-left: 5%;
+    color: red;
+}
+
+.tituloProdutos{
+    font-size: 30px;
+    color: white;
+}
+
 .textoIndex{
+    font-size: 60px;
+    text-align: center;
+    margin-left: 210px;
+    color: red;
+}
+
+#textoLateralLogin{
+    position: relative;
+    left:60%;
+    top: 20%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+}
+
+#textoLoginCliente{
     font-size: 60px;
     text-align: center;
     margin-left: 210px;
@@ -124,12 +235,37 @@
     margin-left: 45px;
     font-size: 45px;
 }
+
+#cadeiraGamer{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+#placaVideo{
+    position: absolute;
+    text-align: center;
+    top: 9%;
+    left: 35%;
+}
+
+#fonte{
+    position: absolute;
+    text-align: right;
+    top: 9%;
+    left: 70%;
+}
+
 /*----------------------------- Final CSS Textos -----------------------------*/
 #tabelaVisaoGeral{
     color: white;
     background-color: red;
 }
 /*----------------------------- Final CSS Tabelas -----------------------------*/
+#index{
+    color: red;
+    background-color: #333436;
+}
+
 #top {
     position: relative;
     background-color: black;

@@ -55,7 +55,7 @@ public class PaginasMB {
     
     
     public String getPaginaDetalhesProduto() {
-        return "detalhesProdutos";
+        return "detalhesProduto";
     }
     
     public String getPaginaFuncoesAdmin() {

@@ -7,58 +7,47 @@
 
     <ui:define name="content">
         <h:form>
-            <h4>Cadeira Gamer Mud Racer 10</h4>
-            <br>
-            </br>
-            <h4>Detalhes:
-            <br>
-            </br>
-            Dimensões(CxLxA):76x59x129~139cm
-            <br>
-            </br>
-            Revestimento:100% Poliéster
-            <br>
-            </br>
-            Espuma moldada D45 Apoios de braço: Poliuretano e metal(tecnologia 4D)
-            <br>
-            </br> 
-            Base: 350mm(nylon)
-            <br>
-            </br>
-            Diâmetro da Base: 645mm
-            <br>
-            </br>
-            Rodízios: PU 65mm
-            <br>
-            </br>
-            Ajuste de altura: 100mm
-            <br>
-            </br>
-            Função Relax (Tilt Mechanism): 3º~16º
-            <br>
-            </br>
-            Função de Rotação
-            <br>
-            </br>
-            Pistão a gás(Classe 4)
-            <br>
-            </br>
-            Suporta até 180Kg
+            <p class="textoProduto">Cadeira Gamer Mud Racer 10</p>
+            <img src="resources/imagens/Cadeira Gamer Mud Racer.png" alt="logo" class="imgDetalhesProduto"/>
+            <p class="textoProduto">Detalhes:</p>
+            <h4 class="detalhesProduto">
+                Dimensões(CxLxA):76x59x129~139cm
+                <br/>
+                Revestimento:100% Poliéster
+                <br/>
+                Espuma moldada D45 Apoios de braço: Poliuretano e metal(tecnologia 4D)
+                <br/>
+                Base: 350mm(nylon)
+                <br/>
+                Diâmetro da Base: 645mm
+                <br/>
+                Rodízios: PU 65mm
+                <br/>
+                Ajuste de altura: 100mm
+                <br/>
+                Função Relax (Tilt Mechanism): 3º~16º
+                <br/>
+                Função de Rotação
+                <br/>
+                Pistão a gás(Classe 4)
+                <br/>
+                Suporta até 180Kg
             </h4>
-            <h4>
-            R$1.813,53
-            <br>
-            </br>
-            R$80,00 de frete. Entrega estimada 5 - 10 de Maio
-            </h4>
-            <h5>Quantidade:</h5
-            <h:panelGrid columns="1" style="margin-bottom: 10px">
-                <p:spinner id="botaoQtde" value="#{sliderView.numero1}" min="1" max="99" 
-                           stepFactor="1" valueChangeListener="#{sliderView.onInputChanged}"> 
-                </p:spinner> 
-            </h:panelGrid>
-            
-            
+            <div id="finalizacaoProduto">
+                <p class="textoProduto">R$1.813,53</p>
+                <p class="detalhesProduto">R$80,00 de frete. Entrega estimada 5 - 10 de Maio</p>
+                <h:panelGrid columns="1">
+                    <p class="detalhesProduto" style="margin-left: 60%">Quantidade:</p>
+                    <p:spinner style="left: 11%; margin-left: 50%" value="#{sliderView.numero1}" min="1" max="99" 
+                               stepFactor="1" valueChangeListener="#{sliderView.onInputChanged}"> 
+                    </p:spinner> 
+                </h:panelGrid>
+                <br/>
+                <p:commandButton value="Adicionar ao Carrinho" class="btnLoginAdmin"/>
+                <br/>
+                <br/>
+                <p:commandButton value="Comprar Agora" class="btnLoginAdmin"/>
+            </div>
         </h:form>
     </ui:define>
 

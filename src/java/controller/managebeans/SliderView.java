@@ -21,8 +21,7 @@ public class SliderView {
      public void setNumero1(int numero1) {
         this.numero1 = numero1;
     }
-
-     
+ 
     public void onInputChanged(ValueChangeEvent event) {
         FacesMessage message = new FacesMessage("Input Changed", "Value: " + event.getNewValue());
         FacesContext.getCurrentInstance().addMessage(null, message);

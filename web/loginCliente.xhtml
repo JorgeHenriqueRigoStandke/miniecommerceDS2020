@@ -7,15 +7,12 @@
 
     <ui:define name="content">
         <h:form>
-            <div id="fraseTopLogin">
-                <h4>Já tem uma conta? Informe os seus dados abaixo para acessá-la, caso contrário clique em cadastrar.</h4>
-            </div>
-            
-            <div id="imagemCentro">
-                <img src="resources/imagens/logo 2.png" alt="logo"/>
-            </div>
-            
-            <div id="botoes">
+                <p id="fraseTopLogin">Já tem uma conta? Informe os seus dados abaixo para acessá-la, caso contrário clique em cadastrar.</p>
+                
+                <p id="textoLoginCliente">Área de Login</p>
+                <img id="imagemCentro" src="resources/imagens/logo 2.png" alt="logo"/>
+                
+            <div id="camposLogin">
                 <span>
                     <h4>Email</h4>
                     <p:inputText value="#{cadastroMB.email}"/>
@@ -24,15 +21,13 @@
                     <h4>Senha</h4>
                     <p:inputText value="#{cadastroMB.senha}"/>
                 </span>
-                <p:commandButton value="Login" id="btnLogin" action="#{paginasMB.getPaginaCadastroCliente()}"/>
+                <br/>
+                <p:commandButton value="Login" class="btnLoginAdmin"/>
             </div>
             
             <div id="textoLateralLogin">
-                <h4>É um administrado? Clique no botão abaixo para realizar o login e acessar a área de admin!</h4>
-            </div>
-            
-            <div>
-                <p:commandButton value="LoginAdmin" id="btnLoginAdmin" action="#{paginasMB.getPaginaLoginAdmin()}"/>
+                <p>É um administrado? Clique no botão abaixo para realizar o login e acessar a área de admin!</p>
+                <p:commandButton value="Login Admin" class="btnLoginAdmin" action="#{paginasMB.getPaginaLoginAdmin()}"/>
             </div>
         </h:form>
     </ui:define>
