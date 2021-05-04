@@ -1,21 +1,42 @@
 
-#top {
-    position: relative;
-    background-color: black;
-    padding: 50px;
-    text-align: center;
-    height: 8.5vh;
+.btnCadSalvar{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: 8vw;
+    height: 2.5vw;
+    background: red;
+    top: 70%;
+    left: 2%;
+    font-size: 1.25vw;
+    color: #fff;
 }
 
-#bottom {
-    position: relative;
-    background-color: black;
-    padding: 5px;
-    top: -10px;
-    margin: 10px 0px 0px 0px;
-    color: white;
-    text-align: center;
+.btnFuncAdmin{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: 250px;
+    height: 130px;
+    background: red;
+    text-align: justify;
+    margin-left: 50px;
+    margin-top: 15px;
+    font-size: 19px;
+    left: -20vw;
+    color: #fff; 
 }
+
+.btnCadVoltar{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: 8vw;
+    height: 2.5vw;
+    background: red;
+    top: 70%;
+    left: 46%;
+    font-size: 1.25vw;
+    color: #fff;
+}
+/*----------------------------- Final CSS Botões -----------------------------*/
 
 #logoTop img{
     position: absolute;
@@ -23,6 +44,69 @@
     width: 200px;
     left: 100px;
     top: 50px;
+}
+
+.camposCadastro{
+    position: relative;
+    left:45%;
+    top: 30%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.85vw;
+}
+
+#index{
+    color: red;
+    background-color: #333436;
+}
+
+#logoIndex{
+    height: 240px;
+    margin-left: 110px;
+    margin-top: -180px;
+    margin-bottom: 30px;
+}
+
+#logoIndexAdmin{
+    height: 240px;
+    margin-left: 410px;
+    margin-top: -180px;
+    margin-bottom: 30px;
+}
+
+#imagemCentral{
+    width: 1800px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+#logoCadasroProdutos{
+    height: 240px;
+    margin-left: 350px;
+    margin-top: -180px;
+    margin-bottom: 30px;
+}
+
+/*----------------------------- Final CSS Imagens -----------------------------*/
+
+.textoIndex{
+    font-size: 60px;
+    text-align: center;
+    margin-left: 210px;
+    color: red;
+}
+
+#textoCadastroProdutos{
+    font-size: 60px;
+    text-align: center;
+    margin-left: 310px;
+    color: red;
+}
+
+.tituloBottom{
+    color: white;
+    font-weight: bold;
+    text-align: center;
 }
 
 .textoVermelho{
@@ -40,34 +124,28 @@
     margin-left: 45px;
     font-size: 45px;
 }
-
-#index{
-    color: red;
-    background-color: #333436;
-}
-
-#logoIndex{
-    height: 240px;
-    margin-left: 110px;
-    margin-top: -180px;
-    margin-bottom: 30px;
-}
-
-#imagemCentral{
-    width: 1800px;
-    margin-bottom: 20px;
-    margin-left: 40px;
-}
-
-#textoIndex{
-    font-size: 60px;
-    text-align: center;
-    margin-left: 210px;
-}
-
-.tituloBottom{
+/*----------------------------- Final CSS Textos -----------------------------*/
+#tabelaVisaoGeral{
     color: white;
-    font-weight: bold;
+    background-color: red;
+}
+/*----------------------------- Final CSS Tabelas -----------------------------*/
+#top {
+    position: relative;
+    background-color: black;
+    padding: 50px;
+    text-align: center;
+    height: 8.5vh;
+}
+
+#bottom {
+    position: relative;
+    background-color: black;
+    padding: 5px;
+    top: -10px;
+    margin: 10px 0px 0px 0px;
+    color: white;
+    bottom: 0;
     text-align: center;
 }
 
