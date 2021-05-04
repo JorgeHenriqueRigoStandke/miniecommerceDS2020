@@ -2,8 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="MiniECommercePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>model.entity.UsuarioEntity</class>
-    <class>model.entity.ProdutoEntity</class>
+    <class>model.entity.Pedido</class>
+    <class>model.entity.Produto</class>
+    <class>model.entity.ProdutoPedido</class>
+    <class>model.entity.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/miniEcommerce?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

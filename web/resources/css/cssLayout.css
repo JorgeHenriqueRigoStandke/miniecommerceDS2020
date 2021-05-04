@@ -116,23 +116,10 @@
     font-size: 0.85vw;
 }
 
-#camposCadastroEsquerdo{
+#camposCadastroCliente{
     position: relative;
-    left:0;
-    top: 30%;
-    margin-left: 30%;
-    margin-bottom: 5%;
-    color: white;
-    font-size: 0.85vw;
-    text-decoration: none;
-}
-
-#camposCadastroDireito{
-    position: absolute;
-    right: 0;
-    top: 30%;
-    margin-right: 30%;
-    margin-bottom: 5%;
+    top: 15%;
+    left: 44.5%;
     color: white;
     font-size: 0.85vw;
     text-decoration: none;

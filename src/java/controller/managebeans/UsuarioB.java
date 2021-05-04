@@ -7,12 +7,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import model.dao.UsuarioDAO;
-import model.entity.UsuarioEntity;
+import model.entity.Usuario;
 
-/**
- *
- * @author João Vitor Schmidt
- */
+/** @author João Vitor Schmidt**/
 @Named(value = "usuarioB")
 @RequestScoped
 public class UsuarioB {
@@ -26,33 +23,26 @@ public class UsuarioB {
     private String senha;
     private String confirmarSenha;
     private String cpf;
-    private String telefone;
-    private String logradouro;
-    private String complemento;
-    private String cidade;
-    private String numeroCasa;
+    private String cep;
     
-    public List<UsuarioEntity> getTodosDados()
+    public List<Usuario> getTodosDados()
     {
-        return UsuarioDAO.getMostrarTodosDados("usuarioB.findAll");
+        return UsuarioDAO.getAllResults("usuario.findAll");
     }
     
     public void salvarCadastro()
     {
         
-        UsuarioEntity u = new UsuarioEntity();
+        Usuario u = new Usuario();
         
         u.setNome(nome);
         u.setEmail(email);
         u.setSenha(senha);
         u.setCpf(cpf);
-        u.setTelefone(telefone);
-        u.setLogradouro(logradouro);
-        u.setComplemento(complemento);
-        u.setCidade(cidade);
-        u.setNumeroCasa(numeroCasa);
+        u.setCep(cep);
+        u.setAdministrador(Boolean.FALSE);
         
-        u = UsuarioDAO.salvar(u);
+        u = UsuarioDAO.save(u);
         
         if (u == null)
         {
@@ -78,30 +68,6 @@ public class UsuarioB {
         this.id = id;
     }
     
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-    
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-   
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    } 
-
     public String getNome() {
         return nome;
     }
@@ -141,21 +107,13 @@ public class UsuarioB {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public String getTelefone() {
-        return telefone;
+    
+    public String getCep() {
+        return cep;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getNumeroCasa() {
-        return numeroCasa;
-    }
-
-    public void setNumeroCasa(String numeroCasa) {
-        this.numeroCasa = numeroCasa;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
     
 }

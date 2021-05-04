@@ -20,7 +20,7 @@
             <p class="textoIndex">Área de Cadastramento</p>
             <img id="logoIndexAdmin" src="resources/imagens/logo 2.png" alt="logo"/>
 
-            <div id="camposCadastroEsquerdo">
+            <div id="camposCadastroCliente">
 
                 <span>
                     <h4>Nome completo*:</h4>
@@ -43,33 +43,12 @@
                 </span>
 
                 <span>
-                    <h4>Complemento*:</h4>
-                    <p:inputText value="#{usuarioB.complemento}"/>
+                    <h4>CEP*:</h4>
+                    <p:inputMask value="#{usuarioB.cep}" mask="99999-999"/>
                 </span>
-            </div> 
-
-            <div id="camposCadastroDireito">
                 <span>
                     <h4>CPF*:</h4>
-                    <p:inputMask value="#{usuarioB.cpf}" mask="999.999.999.-99"/>
-                </span>
-
-                <span>
-                    <h4>Logradouro*:</h4>
-                    <p:inputText value="#{usuarioB.logradouro}"/>
-                </span>
-
-                <span>
-                    <h4>Cidade*:</h4>
-                    <p:inputText value="#{usuarioB.cidade}"/>
-                </span>
-                <span>
-                    <h4>Número da Casa*:</h4>
-                    <p:inputMask value="#{usuarioB.numeroCasa}" mask="999"/>
-                </span>                         
-                <span>
-                    <h4>Telefone*:</h4>
-                    <p:inputMask value="#{usuarioB.telefone}" mask="(99) 99999-9999"/>
+                    <p:inputMask value="#{usuarioB.cpf}" mask="999.999.999-99"/>
                 </span>
             </div>
             <br/>
