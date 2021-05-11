@@ -34,7 +34,7 @@ public class UsuarioB {
     
     public void salvarCadastro()
     {
-        
+        if(senha.equals(confirmarSenha)){
         Usuario u = new Usuario();
         
         u.setNome(nome);
@@ -55,6 +55,11 @@ public class UsuarioB {
         {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O Cliente " + nome + " foi cadastrado com sucesso!", ""));
+        }
+        }
+        else{
+           FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "As senhas não são iguais!", "")); 
         }
     }
     
