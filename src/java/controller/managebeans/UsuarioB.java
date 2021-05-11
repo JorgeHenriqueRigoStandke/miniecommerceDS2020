@@ -8,16 +8,18 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
+import utils.Utilidades;
 
 /** @author João Vitor Schmidt**/
 @Named(value = "usuarioB")
 @RequestScoped
 public class UsuarioB {
-
+    
     @Inject
     private UsuarioDAO UsuarioDAO;
     
     private Integer id;
+    private Usuario usuario;
     private String nome;
     private String email;
     private String senha;
@@ -47,7 +49,7 @@ public class UsuarioB {
         if (u == null)
         {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O cadastro nÃ£o foi realizado, favor olhar o output!", ""));
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O cadastro não foi realizado, favor olhar o output!", ""));
         }
         else
         {
@@ -56,8 +58,28 @@ public class UsuarioB {
         }
     }
     
-    public void loginCliente(){    
+    public UsuarioB(){
+        if(Utilidades.verificarExisteSessao("usuario")){
+            usuario = (Usuario) Utilidades.recuperarSessao("usuario");
+        }
+    }
+    
+    public String loginCliente(){    
+        usuario = UsuarioDAO.loginCliente(email, senha);
         
+        if(getUsuario() == null){
+            return "loginCliente";        
+        }
+        
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
+        
+        return "index?faces-redirect-true";
+    }
+    
+    public String logout(){
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("usuario");
+        
+        return "loginCliente?faces-redirect-true";
     }
     
     public Integer getId() {
@@ -66,6 +88,14 @@ public class UsuarioB {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     public String getNome() {
@@ -115,5 +145,4 @@ public class UsuarioB {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
 }

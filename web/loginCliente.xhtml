@@ -6,12 +6,12 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <h:form>
+         <h:form>
                 <p id="fraseTopLogin">Já tem uma conta? Informe os seus dados abaixo para acessá-la, caso contrário clique em cadastrar.</p>
-                
+
                 <p id="textoLoginCliente">Área de Login</p>
-                <img id="imagemCentro" src="resources/imagens/logo 2.png" alt="logo"/>
-                
+                <img id="imagemCentroLogin" src="resources/imagens/logo 2.png" alt="logo"/>
+
             <div id="camposLogin">
                 <span>
                     <h4>Email</h4>
@@ -24,9 +24,9 @@
                 <br/>
                 <p:commandButton value="Login" class="btnLoginAdmin" action="#{usuarioB.loginCliente()}"/>
             </div>
-            
+
             <div id="textoLateralLogin">
-                <p>É um administrado? Clique no botão abaixo para realizar o login e acessar a área de admin!</p>
+                <p>É um administrador? Clique no botão abaixo para realizar o login e acessar a área de admin!</p>
                 <p:commandButton value="Login Admin" class="btnLoginAdmin" action="#{paginasMB.getPaginaLoginAdmin()}"/>
             </div>
         </h:form>

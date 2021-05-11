@@ -105,6 +105,15 @@
 .imgDetalhesProduto{
     margin-left: 5%;
 }
+
+#imagemCentroLogin{
+    position: absolute;
+    height: 120px;
+    margin-left: 175px;
+    left: 28%;
+    top: 5vw;
+}
+
 /*----------------------------- Final CSS Imagens -----------------------------*/
 
 .camposCadastro{
@@ -125,6 +134,19 @@
     text-decoration: none;
 }
 
+#fraseTopLogin{
+    position: relative;
+    font-size: 1.2vw;
+    color: #fff;
+    left: 20%;
+}
+#textoLateralLogin{
+    position: absolute;
+    left: 75%;
+    top: 40%;
+    color: white;
+    font-size: 0.85vw;
+}
 #camposLogin{
     position: relative;
     left:48%;
@@ -176,15 +198,6 @@
     text-align: center;
     margin-left: 210px;
     color: red;
-}
-
-#textoLateralLogin{
-    position: relative;
-    left:60%;
-    top: 20%;
-    margin-bottom: 5%;
-    color: white;
-    font-size: 0.85vw;
 }
 
 #textoLoginCliente{

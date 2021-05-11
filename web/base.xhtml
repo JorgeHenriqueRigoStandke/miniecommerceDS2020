@@ -25,7 +25,8 @@
                         <h:commandLink value="Produtos" class="tituloTopo" action="#{paginasMB.getPaginaListaProdutos()}"/>
                         <h:commandLink value="Carrinho" class="tituloTopo" action="#{paginasMB.getPaginaCarrinho()}"/>
                         <h:commandLink value="Cadastrar" class="tituloTopo" action="#{paginasMB.getPaginaCadastroClientes()}"/>
-                        <h:commandLink value="Login" class="textoVermelho" action="#{paginasMB.getPaginaLoginCliente()}"/>
+                        <h:commandLink value="Login" class="textoVermelho" action="#{paginasMB.getPaginaLoginCliente()}" rendered="#{usuarioB.usuario == null}"/>
+                        <h:commandLink value="Logout" class="textoVermelho" action="#{usuarioB.logout()}" rendered="#{usuarioB.usuario != null}"/>
                     </div>
                 </div>
             </div>
