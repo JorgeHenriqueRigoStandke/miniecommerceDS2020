@@ -34,7 +34,6 @@ public class UsuarioB {
     
     public void salvarCadastro()
     {
-        if(senha.equals(confirmarSenha)){
         Usuario u = new Usuario();
         
         u.setNome(nome);
@@ -49,17 +48,17 @@ public class UsuarioB {
         if (u == null)
         {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O cadastro não foi realizado, favor olhar o output!", ""));
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro ao Cadastrar", "O cadastro não foi realizado, favor olhar o output!"));
+        }
+        else if (senha.equals(confirmarSenha))
+        {
+           FacesContext context = FacesContext.getCurrentInstance();
+           context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro", "As senhas não são iguais!")); 
         }
         else
         {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O Cliente " + nome + " foi cadastrado com sucesso!", ""));
-        }
-        }
-        else{
-           FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "As senhas não são iguais!", "")); 
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + nome + " foi cadastrado com sucesso!"));
         }
     }
     
@@ -73,18 +72,21 @@ public class UsuarioB {
         usuario = UsuarioDAO.loginCliente(email, senha);
         
         if(getUsuario() == null){
-            return "loginCliente";        
+            return "loginCliente";
         }
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + nome + " foi logado com sucesso!"));
         
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
         
-        return "index?faces-redirect-true";
+        return "index?faces-redirect=true";
     }
     
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("usuario");
         
-        return "loginCliente?faces-redirect-true";
+        return "loginCliente?faces-redirect=true";
     }
     
     public Integer getId() {
