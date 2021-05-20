@@ -10,16 +10,14 @@ import model.dao.UsuarioDAO;
 import model.entity.Usuario;
 import utils.Utilidades;
 
-/**
- * @author João Vitor Schmidt*
- */
+/** @author João Vitor Schmidt**/
 @Named(value = "usuarioB")
 @RequestScoped
 public class UsuarioB {
-
+    
     @Inject
     private UsuarioDAO UsuarioDAO;
-
+    
     private Integer id;
     private Usuario usuario;
     private String nome;
@@ -28,61 +26,69 @@ public class UsuarioB {
     private String confirmarSenha;
     private String cpf;
     private String cep;
-
-    public List<Usuario> getTodosDados() {
+    
+    public List<Usuario> getTodosDados()
+    {
         return UsuarioDAO.getAllResults("usuario.findAll");
     }
-
-    public void salvarCadastro() {
-        if (senha.equals(confirmarSenha)) {
-            Usuario u = new Usuario();
-
-            u.setNome(nome);
-            u.setEmail(email);
-            u.setSenha(senha);
-            u.setCpf(cpf);
-            u.setCep(cep);
-            u.setAdministrador(Boolean.FALSE);
-
-            u = UsuarioDAO.save(u);
-
-            if (u == null) {
-                FacesContext context = FacesContext.getCurrentInstance();
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "O cadastro não foi realizado, favor olhar o output!", ""));
-            } else {
-                FacesContext context = FacesContext.getCurrentInstance();
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "O Cliente " + nome + " foi cadastrado com sucesso!", ""));
-            }
-        } else {
+    
+    public void salvarCadastro()
+    {
+        Usuario u = new Usuario();
+        
+        u.setNome(nome);
+        u.setEmail(email);
+        u.setSenha(senha);
+        u.setCpf(cpf);
+        u.setCep(cep);
+        u.setAdministrador(Boolean.FALSE);
+        
+        u = UsuarioDAO.save(u);
+        
+        if (u == null)
+        {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "As senhas não são iguais!", ""));
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro ao Cadastrar", "O cadastro não foi realizado, favor olhar o output!"));
+        }
+        else if (senha.equals(confirmarSenha))
+        {
+           FacesContext context = FacesContext.getCurrentInstance();
+           context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro", "As senhas não são iguais!")); 
+        }
+        else
+        {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + nome + " foi cadastrado com sucesso!"));
         }
     }
-
-    public UsuarioB() {
-        if (Utilidades.verificarExisteSessao("usuario")) {
+    
+    public UsuarioB(){
+        if(Utilidades.verificarExisteSessao("usuario")){
             usuario = (Usuario) Utilidades.recuperarSessao("usuario");
         }
     }
-
-    public String loginCliente() {
+    
+    public String loginCliente(){    
         usuario = UsuarioDAO.loginCliente(email, senha);
-
-        if (getUsuario() == null) {
+        
+        if(getUsuario() == null){
             return "loginCliente";
         }
-
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + nome + " foi logado com sucesso!"));
+        
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
-
-        return "index?faces-redirect-true";
+        
+        return "index?faces-redirect=true";
     }
-
-    public String logout() {
+    
+    public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("usuario");
-
-        return "loginCliente?faces-redirect-true";
+        
+        return "loginCliente?faces-redirect=true";
     }
-
+    
     public Integer getId() {
         return id;
     }
@@ -90,7 +96,7 @@ public class UsuarioB {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -98,7 +104,7 @@ public class UsuarioB {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
+    
     public String getNome() {
         return nome;
     }
@@ -106,7 +112,7 @@ public class UsuarioB {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
     public String getCpf() {
         return cpf;
     }
@@ -114,7 +120,7 @@ public class UsuarioB {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
+    
     public String getConfirmarSenha() {
         return confirmarSenha;
     }
@@ -138,7 +144,7 @@ public class UsuarioB {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+    
     public String getCep() {
         return cep;
     }
