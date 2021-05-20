@@ -6,7 +6,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
 /**
- *
+ *teste
  * @author jorge
  */
 @Named(value = "produtosRepositorioMB")
