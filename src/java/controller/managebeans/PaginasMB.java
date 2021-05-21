@@ -42,11 +42,11 @@ public class PaginasMB {
     }
     
     public String getPaginaCadastroProdutos() {
-        return "adminCadastroProdutos";
+        return "adminCadastroProdutos?faces-redirect-true";
     }
     
     public String getPaginaVisaoGeral() {
-        return "adminVisaoGeral";
+        return "adminVisaoGeral?faces-redirect-true";
     }
     
     public String getPaginaCadastroClientes() {
@@ -59,7 +59,7 @@ public class PaginasMB {
     }
     
     public String getPaginaFuncoesAdmin() {
-        return "funcoesAdmin";
+        return "funcoesAdmin?faces-redirect-true";
     }
 
 }

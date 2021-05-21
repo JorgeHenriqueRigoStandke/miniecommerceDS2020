@@ -3,10 +3,13 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./base.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="content">
          <h:form>
+                <h:inputHidden value="#{usuarioB.id}"/>
+             
                 <p id="fraseTopLogin">Já tem uma conta? Informe os seus dados abaixo para acessá-la, caso contrário clique em cadastrar.</p>
 
                 <p id="textoLoginCliente">Área de Login</p>
@@ -19,15 +22,11 @@
                 </span>
                 <span>
                     <h4>Senha</h4>
-                    <p:inputText value="#{usuarioB.senha}"/>
+                    <p:password value="#{usuarioB.senha}"/>
                 </span>
                 <br/>
+                <br/>
                 <p:commandButton value="Login" class="btnLoginAdmin" action="#{usuarioB.loginCliente()}"/>
-            </div>
-
-            <div id="textoLateralLogin">
-                <p>É um administrador? Clique no botão abaixo para realizar o login e acessar a área de admin!</p>
-                <p:commandButton value="Login Admin" class="btnLoginAdmin" action="#{paginasMB.getPaginaLoginAdmin()}"/>
             </div>
         </h:form>
     </ui:define>

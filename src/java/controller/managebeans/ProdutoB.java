@@ -1,13 +1,19 @@
 package controller.managebeans;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import model.dao.ProdutoDAO;
 import model.entity.Produto;
+import org.primefaces.model.file.UploadedFile;
 
 /**@author João Vitor Schmidt*/
 
@@ -15,13 +21,16 @@ import model.entity.Produto;
 @RequestScoped
 public class ProdutoB {
     
+    private List<Produto> carrinho;
+    
     @Inject
     private ProdutoDAO ProdutoDAO;
     
     private Integer id;
     private String nome;
-    private String foto;
     private Double preco;
+    private String foto;
+    private UploadedFile imagemProduto;
     private String descricao;
     
     public List<Produto> getTodosDados()
@@ -29,8 +38,45 @@ public class ProdutoB {
         return ProdutoDAO.getAllResults("produto.findAll");
     }
     
-    public void salvarProduto()
+    public ProdutoB()
     {
+        carrinho = new ArrayList<>();
+        
+        if(utils.Utilidades.verificaExisteRegistroSessao("carrinho"))
+        {
+            carrinho = (List<Produto>) utils.Utilidades.recuperaRegistroSessao("carrinho");
+        }
+    }
+    
+    public void adiocionarCarrinho(Produto p)
+    {
+        getCarrinho().add(p);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso", "O produto foi adicionado ao carrinho."));
+        context.getExternalContext().getFlash().setKeepMessages(true);
+        
+        utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
+    }
+    
+    public String salvarProduto()
+    {
+        try 
+        {
+            String caminho = ((ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext()).getRealPath("/");
+            
+            File file = new File(caminho + "/resources/imgProdutos/" + imagemProduto.getFileName());
+                    
+            OutputStream out = new FileOutputStream(file);
+            out.write(imagemProduto.getContent());
+            out.close();
+            
+            foto = imagemProduto.getFileName();
+            
+        } catch (Exception e) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_FATAL, "Erro ao salvar a Imagem", "Erro: " + e.getLocalizedMessage()));
+        }
+        
         Produto p = new Produto();
         
         p.setNome(nome);
@@ -43,15 +89,19 @@ public class ProdutoB {
         if (p == null)
         {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O cadastro não foi realizado, favor olhar o output!", ""));
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro ao Cadastrar", "O cadastro não foi realizado, favor olhar o output!"));
+            context.getExternalContext().getFlash().setKeepMessages(true);
         }
         else
         {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "O Produto " + nome + " foi cadastrado com sucesso!", ""));
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Produto " + nome + " foi cadastrado com sucesso!"));
+            context.getExternalContext().getFlash().setKeepMessages(true);
         }
+        
+        return "adminCadastroProdutos?faces-redirect=true";
     }
-
+    
     public Integer getId() {
         return id;
     }
@@ -84,11 +134,27 @@ public class ProdutoB {
         this.nome = nome;
     }
 
+    public UploadedFile getImagemProduto() {
+        return imagemProduto;
+    }
+
+    public void setImagemProduto(UploadedFile imagemProduto) {
+        this.imagemProduto = imagemProduto;
+    }
+
     public String getFoto() {
         return foto;
     }
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public List<Produto> getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(List<Produto> carrinho) {
+        this.carrinho = carrinho;
     }
 }

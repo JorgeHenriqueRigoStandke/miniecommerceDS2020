@@ -76,7 +76,8 @@ public class UsuarioB {
         }
         
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + nome + " foi logado com sucesso!"));
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + usuario.getNome() + " foi logado com sucesso!"));
+        context.getExternalContext().getFlash().setKeepMessages(true);
         
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
         

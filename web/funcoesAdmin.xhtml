@@ -7,12 +7,13 @@
 
     <ui:define name="content">
         <h:form>
+            <h:inputHidden value="#{usuarioB.id}"/>
             <p class="textoIndex">Funções de Admin</p>
             <img id="logoIndexAdmin" src="resources/imagens/logo 2.png" alt="logo"/>
             <div class="camposCadastro">
                 <p:commandButton class="btnFuncAdmin" ajax="false" value="Cadastro de Produtos" action="#{paginasMB.getPaginaCadastroProdutos()}"/>
                 <p:commandButton class="btnFuncAdmin" ajax="false" value="Visão Geral" action="#{paginasMB.getPaginaVisaoGeral()}"/>
-                <p:commandButton class="btnFuncAdmin" ajax="false" value="Sair de Admin" action="#{paginasMB.getPaginaLoginAdmin()}"/>
+                <p:commandButton class="btnFuncAdmin" ajax="false" value="Sair de Admin" action="#{usuarioB.logout()}"/>
             </div>
         </h:form>
     </ui:define>

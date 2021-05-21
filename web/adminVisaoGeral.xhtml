@@ -7,21 +7,22 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataTable var="dados" id="tabelaVisaoGeral" value="">
-                <p:column headerText="Nome">
+            <p style="text-align: center; color: red; font-size: 30px;">Visão Geral das Compras</p>
+            <p:dataTable var="dados" value="#{produtoB.todosDados}" class="tabelaVisaoGeral">
+                <p:column headerText="Nome" class="tabelaVisaoGeral">
+                    <h:outputText value="#{dados.nome}"/>
+                </p:column>
+                <p:column headerText="Horário de Compra" class="tabelaVisaoGeral"> 
                     <h:outputText value=""/>
                 </p:column>
-                <p:column headerText="Horário de Compra">
+                <p:column headerText="Preço" class="tabelaVisaoGeral">
+                    <h:outputText value="R$ #{dados.preco}"/>
+                </p:column>
+                <p:column headerText="Dia da Compra" class="tabelaVisaoGeral">
                     <h:outputText value=""/>
                 </p:column>
-                <p:column headerText="Preço">
-                    <h:outputText value=""/>
-                </p:column>
-                <p:column headerText="Dia da Compra">
-                    <h:outputText value=""/>
-                </p:column>
-                <p:column headerText="Itens da Compra">
-                    <h:outputText value=""/>
+                <p:column headerText="Itens da Compra" class="tabelaVisaoGeral">
+                    <h:outputText value="#{dados.descricao}"/>
                 </p:column>
             </p:dataTable>
             <br/>

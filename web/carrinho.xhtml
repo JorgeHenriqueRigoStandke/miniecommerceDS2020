@@ -1,10 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./base.xhtml">
+                template="./base.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        content
+        <p style="text-align: center; color: red; font-size: 30px;">Seus Produtos</p>
+        <p:dataTable var="dados" value="#{produtoB.carrinho}">
+                <p:column headerText="Produtos" class="tabelaCarrinho">
+                    <h:outputText value="#{dados.nome}"/>
+                </p:column>
+                <p:column headerText="Valor Unitário" class="tabelaCarrinho">
+                    <h:outputText value="R$ #{dados.preco}"/>
+                </p:column>
+                <p:column headerText="Qtd" class="tabelaCarrinho">
+                    <h:outputText value=""/>
+                </p:column>
+                <p:column headerText="Subtotal" class="tabelaCarrinho">
+                    <h:outputText value=""/>
+                </p:column>
+                <p:column headerText="Ações" class="tabelaCarrinho">
+                    <p:commandLink value="Excluir o produto"/>
+                </p:column>
+        </p:dataTable>
     </ui:define>
 
 </ui:composition>

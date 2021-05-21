@@ -3,12 +3,11 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./base.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="content">
-        <h:form>
-            <p:growl id="mensagem" showDetail="true" sticky="true"/>
-
+        <h:form enctype="multipart/form-data">
             <h:inputHidden value="#{produtoB.id}"/>
 
             <p id="textoCadastroProdutos">Área de Cadastro de Produtos</p>
@@ -17,24 +16,16 @@
                 <div>
                     <h4>Identificação*:</h4>
                     <p:inputText value="#{produtoB.nome}"/>
-                </div>
-                <div>
                     <h4>Preço*:</h4>
-                    <p:inputMask value="#{produtoB.preco}" mask="9999"/>
-                </div>
-                <div>
+                    <p:inputNumber symbol="R$ " value="#{produtoB.preco}"/>
                     <h4>Descrição do Produto*:</h4>
                     <p:inputText value="#{produtoB.descricao}"/>
-                </div>  
-                <div class="card">
-                    <h:form enctype="multipart/form-data">
-                        <h4>Imagem*:</h4>
-                        <p:fileUpload value="#{uploadImagem.file}" mode="simple" skinSimple="true" />
-                        <p:commandButton value="Importar" ajax="false" action="#{uploadImagem.upload}" styleClass="p-mt-3 ui-button-outlined p-d-block"/>
-                    </h:form>
+                    <h4>Imagem*:</h4>
+                    <p:fileUpload value="#{produtoB.imagemProduto}" mode="simple" skinSimple="true" />
                 </div>
                 <br/>
                 <p:commandButton class="btnCadSalvar" ajax="false" value="Cadastrar" action="#{produtoB.salvarProduto()}"/>
+                <p:commandButton class="btnCadSalvar" ajax="false" value="Voltar" action="#{paginasMB.getPaginaFuncoesAdmin()}"/>
             </div>
         </h:form>
     </ui:define>

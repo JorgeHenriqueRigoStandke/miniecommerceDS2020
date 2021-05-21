@@ -15,6 +15,7 @@
     <h:body>
 
         <h:form>
+            <p:growl id="mensagem" showDetail="true"/>
             <div id="top">
                 <div>
                     <div id="logoTop">
@@ -24,9 +25,10 @@
                         <h:commandLink value="Início" class="textoVermelho" action="#{paginasMB.getPaginaInicio()}"/>
                         <h:commandLink value="Produtos" class="tituloTopo" action="#{paginasMB.getPaginaListaProdutos()}"/>
                         <h:commandLink value="Carrinho" class="tituloTopo" action="#{paginasMB.getPaginaCarrinho()}"/>
-                        <h:commandLink value="Cadastrar" class="tituloTopo" action="#{paginasMB.getPaginaCadastroClientes()}"/>
+                        <h:commandLink value="Cadastrar" class="tituloTopo" action="#{paginasMB.getPaginaCadastroClientes()}" rendered="#{usuarioB.usuario == null}"/>
                         <h:commandLink value="Login" class="textoVermelho" action="#{paginasMB.getPaginaLoginCliente()}" rendered="#{usuarioB.usuario == null}"/>
                         <h:commandLink value="Logout" class="textoVermelho" action="#{usuarioB.logout()}" rendered="#{usuarioB.usuario != null}"/>
+                        <h:commandLink value="Funções Admin" class="textoVermelho" action="#{paginasMB.getPaginaFuncoesAdmin()}" rendered="#{usuarioB.usuario.administrador == true}"/>
                     </div>
                 </div>
             </div>
