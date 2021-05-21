@@ -9,32 +9,12 @@
         <h:form>
             <p class="textoProduto">Cadeira Gamer Mud Racer 10</p>
              <p:graphicImage name="imgProdutos/#{produto.foto}" alt="logo"/>
+            <p class="textoProduto">#{produtosRepositorioMB.getNomeproduto(paginasMB.getProduto())}</p>
+            <img src="#{produtosRepositorioMB.getImagemproduto(paginasMB.getProduto())}" alt="logo" class="imgDetalhesProduto"/>
             <p class="textoProduto">Detalhes:</p>
-            <h4 class="detalhesProduto">
-                Dimensões(CxLxA):76x59x129~139cm
-                <br/>
-                Revestimento:100% Poliéster
-                <br/>
-                Espuma moldada D45 Apoios de braço: Poliuretano e metal(tecnologia 4D)
-                <br/>
-                Base: 350mm(nylon)
-                <br/>
-                Diâmetro da Base: 645mm
-                <br/>
-                Rodízios: PU 65mm
-                <br/>
-                Ajuste de altura: 100mm
-                <br/>
-                Função Relax (Tilt Mechanism): 3º~16º
-                <br/>
-                Função de Rotação
-                <br/>
-                Pistão a gás(Classe 4)
-                <br/>
-                Suporta até 180Kg
-            </h4>
+            <h:outputText class="detalhesProduto" value="#{produtosRepositorioMB.getDescricaoproduto(paginasMB.getProduto())}" escape="false" />                          
             <div id="finalizacaoProduto">
-                <p class="textoProduto">R$1.813,53</p>
+                <p class="textoProduto">#{produtosRepositorioMB.getPrecoproduto(paginasMB.getProduto())}</p>
                 <p class="detalhesProduto">R$80,00 de frete. Entrega estimada 5 - 10 de Maio</p>
                 <h:panelGrid columns="1">
                     <p class="detalhesProduto" style="margin-left: 60%">Quantidade:</p>
