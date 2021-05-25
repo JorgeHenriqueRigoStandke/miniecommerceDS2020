@@ -14,29 +14,9 @@
                     <p class="tituloProdutos"><h:outputText value="#{produto.nome}"/></p>
                     <p class="precoProduto"><h:outputText value="R$ #{produto.preco}"/></p>
                     <p:commandButton value="Ver o produto" style="position: relative; font-family: 'Fira Sans', sans-serif; width: auto;  height: 2.25vw; background: red; font-size: 1.25vw; color: #fff; right: 29%;" class="btnVerProduto" action="#{paginasMB.getPaginaDetalhesProduto()}"/>
-                    <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.adiocionarCarrinho(produto)}"/>
+                    <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.comprarAgora(produto)}"/>
                 </div>
             </ui:repeat>
-
-            
-            <div id="cadeiraGamer">
-                <img src="resources/imagens/Cadeira Gamer Mud Racer.png" alt="logo"/>
-                <p class="tituloProdutos">Cadeira Gamer Mud Racer 10</p>
-                <p class="precoProduto">R$1.813,53</p>
-                <p:commandButton value="Ver o produto" class="btnVerProduto" action="#{paginasMB.getPaginaDetalhesProduto(0)}"/>
-            </div>
-            <div id="placaVideo">
-                <img src="resources/imagens/Placa de Video Nvidia 1660 Super.png" alt="logo"/>
-                <p class="tituloProdutos">Placa de Vídeo GTX 1660 Super</p>
-                <p style="font-size: 30px; color: red;">R$2.499,99</p>
-                <p:commandButton value="Ver o produto" style="position: absolute; font-family: 'Fira Sans', sans-serif; width: auto;  height: 2.25vw; background: red; font-size: 1.25vw; color: #fff; right: 29%;" action="#{paginasMB.getPaginaDetalhesProduto(1)}"/>
-            </div>
-            <div id="fonte">
-                <img src="resources/imagens/Fonte de Energia 80 plus 750W.png" alt="logo" style="height: 446px; width: 443px;"/>
-                <p class="tituloProdutos">Fonte de Energia 80 Plus 750W</p>
-                <p style="font-size: 30px; color: red; margin-right: 30%;">R$699,99</p>
-                <p:commandButton value="Ver o produto" style="position: absolute; font-family: 'Fira Sans', sans-serif; width: auto;  height: 2.25vw; background: red; font-size: 1.25vw; color: #fff; right: 24%;" action="#{paginasMB.getPaginaDetalhesProduto(2)}"/>
-            </div>
 
         </h:form>
     </ui:define>

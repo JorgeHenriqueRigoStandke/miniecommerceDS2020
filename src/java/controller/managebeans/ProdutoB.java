@@ -32,6 +32,7 @@ public class ProdutoB {
     private String foto;
     private UploadedFile imagemProduto;
     private String descricao;
+    private String quant;
     
     public List<Produto> getTodosDados()
     {
@@ -54,8 +55,30 @@ public class ProdutoB {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso", "O produto foi adicionado ao carrinho."));
         context.getExternalContext().getFlash().setKeepMessages(true);
+         
+        
         
         utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
+    }
+    
+    public void concluirCompra()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Compra concluída com sucesso!", "Obrigado por comprar conosco!"));
+        context.getExternalContext().getFlash().setKeepMessages(true);
+    }
+    
+    public String comprarAgora(Produto p)
+    {
+        getCarrinho().add(p);
+        
+        utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
+        
+        return "carrinho?faces-redirect=true";
+    }
+    
+    public void subtotal(){
+        
     }
     
     public String salvarProduto()
@@ -83,6 +106,7 @@ public class ProdutoB {
         p.setPreco(preco);
         p.setDescricao(descricao);
         p.setFoto(foto);
+        p.setQuant(quant);
         
         p = ProdutoDAO.save(p);
         
@@ -156,5 +180,13 @@ public class ProdutoB {
 
     public void setCarrinho(List<Produto> carrinho) {
         this.carrinho = carrinho;
+    }
+    
+    public String getQuant() {
+        return quant;
+    }
+
+    public void setQuant(String quant) {
+        this.quant = quant;
     }
 }

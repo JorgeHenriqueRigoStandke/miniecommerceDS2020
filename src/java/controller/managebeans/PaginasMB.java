@@ -61,8 +61,7 @@ public class PaginasMB {
         return "cadastroCliente";
     }
 
-    public String getPaginaDetalhesProduto(int a) {
-        setProduto(a);
+    public String getPaginaDetalhesProduto() {
         return "detalhesProduto";
     }
 

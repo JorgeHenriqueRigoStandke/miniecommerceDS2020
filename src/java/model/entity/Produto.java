@@ -29,6 +29,8 @@ public class Produto implements Serializable
     private String foto;
     @Column
     private Double preco;
+    @Column
+    private String quant;
 
     public Integer getId()
     {
@@ -80,4 +82,11 @@ public class Produto implements Serializable
         this.preco = preco;
     }
 
+    public String getQuant() {
+        return quant;
+    }
+
+    public void setQuant(String quant) {
+        this.quant = quant;
+    }
 }

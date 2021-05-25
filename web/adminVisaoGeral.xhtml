@@ -9,17 +9,11 @@
         <h:form>
             <p style="text-align: center; color: red; font-size: 30px;">Visão Geral das Compras</p>
             <p:dataTable var="dados" value="#{produtoB.todosDados}" class="tabelaVisaoGeral">
-                <p:column headerText="Nome" class="tabelaVisaoGeral">
+                <p:column headerText="Nome dos Produtos" class="tabelaVisaoGeral">
                     <h:outputText value="#{dados.nome}"/>
-                </p:column>
-                <p:column headerText="Horário de Compra" class="tabelaVisaoGeral"> 
-                    <h:outputText value=""/>
                 </p:column>
                 <p:column headerText="Preço" class="tabelaVisaoGeral">
                     <h:outputText value="R$ #{dados.preco}"/>
-                </p:column>
-                <p:column headerText="Dia da Compra" class="tabelaVisaoGeral">
-                    <h:outputText value=""/>
                 </p:column>
                 <p:column headerText="Itens da Compra" class="tabelaVisaoGeral">
                     <h:outputText value="#{dados.descricao}"/>

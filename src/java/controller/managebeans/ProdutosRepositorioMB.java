@@ -1,7 +1,6 @@
 
 package controller.managebeans;
 
-import javafx.scene.shape.DrawMode;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 

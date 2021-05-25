@@ -15,15 +15,25 @@
                     <h:outputText value="R$ #{dados.preco}"/>
                 </p:column>
                 <p:column headerText="Qtd" class="tabelaCarrinho">
-                    <h:outputText value=""/>
+                    <h:outputText value="#{produtoB.quant}"/>
                 </p:column>
                 <p:column headerText="Subtotal" class="tabelaCarrinho">
-                    <h:outputText value=""/>
+                    <h:outputText value="#{produtoB}"/>
                 </p:column>
                 <p:column headerText="Ações" class="tabelaCarrinho">
                     <p:commandLink value="Excluir o produto"/>
                 </p:column>
         </p:dataTable>
+        
+        <div style="text-align: left;">
+            <p style="color: red; font-size: 30px; margin-left: 50px;">Formas de Pagamento</p>
+        </div>
+        
+        <div style="text-align: right; margin-right: 100px;">
+            <p style="color: red; font-size: 30px; margin-left: 50px;">Subtotal: R$ </p>
+            <p style="color: red; font-size: 30px; margin-left: 50px;">Total: R$</p>
+            <p:commandButton value="Concluir a compra" class="btnVerProduto" action="#{produtoB.concluirCompra()}"/>
+        </div>
     </ui:define>
 
 </ui:composition>
