@@ -43,14 +43,14 @@ public class UsuarioB {
         u.setCep(cep);
         u.setAdministrador(Boolean.FALSE);
         
-        u = UsuarioDAO.save(u);
+        
         
         if (u == null)
         {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro ao Cadastrar", "O cadastro não foi realizado, favor olhar o output!"));
         }
-        else if (senha.equals(confirmarSenha))
+        else if (!senha.equals(confirmarSenha))
         {
            FacesContext context = FacesContext.getCurrentInstance();
            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Erro", "As senhas não são iguais!")); 
@@ -59,6 +59,7 @@ public class UsuarioB {
         {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso!", "O Cliente " + nome + " foi cadastrado com sucesso!"));
+            UsuarioDAO.save(u);
         }
     }
     
