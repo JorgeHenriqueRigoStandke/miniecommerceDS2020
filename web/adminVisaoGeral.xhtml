@@ -8,15 +8,20 @@
     <ui:define name="content">
         <h:form>
             <p style="text-align: center; color: red; font-size: 30px;">Visão Geral das Compras</p>
-            <p:dataTable var="dados" value="#{produtoB.todosDados}" class="tabelaVisaoGeral">
-                <p:column headerText="Nome dos Produtos" class="tabelaVisaoGeral">
-                    <h:outputText value="#{dados.nome}"/>
+            <p:dataTable var="dados" value="#{produtoB.todosPedidos}" class="tabelaVisaoGeral">
+                <p:column headerText="Número do Pedido" class="tabelaVisaoGeral">
+                    <h:outputText value="#{dados.id}"/>
                 </p:column>
-                <p:column headerText="Preço" class="tabelaVisaoGeral">
-                    <h:outputText value="R$ #{dados.preco}"/>
+                <p:column headerText="Usuário" class="tabelaVisaoGeral">
+                    <h:outputText value="#{dados.usuario.email}"/>
                 </p:column>
-                <p:column headerText="Itens da Compra" class="tabelaVisaoGeral">
-                    <h:outputText value="#{dados.descricao}"/>
+                <p:column headerText="Produtos no Pedido" class="tabelaVisaoGeral">
+                    <p:dataList value="#{dados.produtosPedido}" var="produtosPedidos">
+                        <h:outputText value="#{produtosPedidos.produto.nome} - R$ #{produtosPedidos.produto.preco}"/>
+                    </p:dataList>
+                </p:column>
+                <p:column headerText="Valor Total" class="tabelaVisaoGeral">
+                    <h:outputText value="R$ #{dados.valorTotal}"/>
                 </p:column>
             </p:dataTable>
             <br/>

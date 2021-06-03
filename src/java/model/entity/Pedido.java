@@ -1,6 +1,8 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,9 @@ public class Pedido implements Serializable
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    
+    @OneToMany(mappedBy = "pedido")
+    private List<ProdutoPedido> produtosPedido = new ArrayList<>();
     
     public Integer getId()
     {
@@ -58,6 +64,20 @@ public class Pedido implements Serializable
     public void setUsuario(Usuario usuario)
     {
         this.usuario = usuario;
+    }
+    
+    public void addProdutoPedido (ProdutoPedido pp)
+    {
+        this.produtosPedido.add(pp);
+        pp.setPedido(this);
+    }
+    
+    public List<ProdutoPedido> getProdutosPedido() {
+        return produtosPedido;
+    }
+
+    public void setProdutosPedido(List<ProdutoPedido> produtosPedido) {
+        this.produtosPedido = produtosPedido;
     }
     
 }

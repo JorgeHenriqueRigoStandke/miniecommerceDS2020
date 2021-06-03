@@ -11,8 +11,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
+import model.dao.PedidoDAO;
 import model.dao.ProdutoDAO;
+import model.dao.ProdutoPedidoDAO;
+import model.entity.Pedido;
 import model.entity.Produto;
+import model.entity.ProdutoPedido;
+import model.entity.Usuario;
 import org.primefaces.model.file.UploadedFile;
 
 /**@author João Vitor Schmidt**/
@@ -25,6 +30,10 @@ public class ProdutoB {
     
     @Inject
     private ProdutoDAO ProdutoDAO;
+    @Inject
+    private PedidoDAO PedidoDAO;
+    @Inject
+    private ProdutoPedidoDAO ProdutoPedidoDAO;
     
     private Integer id;
     private String nome;
@@ -34,6 +43,7 @@ public class ProdutoB {
     private String descricao;
     private String quant;
     private Produto produto;
+    private Usuario usuario;
     
     public String getPaginaDetalhesProdutos(Produto produto) {
         this.setProduto(produto);
@@ -46,6 +56,11 @@ public class ProdutoB {
         return ProdutoDAO.getAllResults("produto.findAll");
     }
     
+    public List<Pedido> getTodosPedidos()
+    {
+        return PedidoDAO.getAllResults("pedido.findAll");
+    }
+    
     public ProdutoB()
     {
         carrinho = new ArrayList<>();
@@ -56,7 +71,7 @@ public class ProdutoB {
         }
     }
     
-    public void adiocionarCarrinho(Produto p)
+    public String adiocionarCarrinho(Produto p)
     {
         if(utils.Utilidades.verificaExisteRegistroSessao("produto"))
         {
@@ -66,12 +81,14 @@ public class ProdutoB {
         getCarrinho().add(produto);
         
         utils.Utilidades.removerRegistroSessao("produto");
+         
+        utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
         
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso", "O produto foi adicionado ao carrinho."));
         context.getExternalContext().getFlash().setKeepMessages(true);
-         
-        utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
+        
+        return "listaProdutos?faces-redirect=true";
     }
     
     public String comprarAgora(Produto p)
@@ -101,15 +118,68 @@ public class ProdutoB {
     
     public String concluirCompra()
     {
+        if(carrinho.isEmpty())
+        {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_ERROR, "Carrinho Vazio", "Você não tem nada adicionado ao carrinho!"));
+            context.getExternalContext().getFlash().setKeepMessages(true);
+            
+            return "index?faces-redirect=true";
+        }
+        
+        double valorTotal = 0;
+        
+        for (Produto produtoCarrinho : carrinho)
+        {
+            valorTotal += produtoCarrinho.getPreco();
+        }
+        
+        Pedido pedido = new Pedido();
+        pedido.setUsuario(usuario);
+        pedido.setValorTotal(valorTotal);
+        
+        pedido = PedidoDAO.save(pedido);
+        
+        if(pedido == null)
+        {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_ERROR, "Erro ao efetuar o pedido!", "Favor olhar o OUTPUT!"));
+            context.getExternalContext().getFlash().setKeepMessages(true);
+            
+            return "index?faces-redirect=true";
+        }
+        
+        for (Produto produtoCarrinho : carrinho)
+        {
+            ProdutoPedido produtoPedido = new ProdutoPedido();
+            produtoPedido.setPedido(pedido);
+            produtoPedido.setProduto(produtoCarrinho);
+            
+            produtoPedido = ProdutoPedidoDAO.save(produtoPedido);
+            
+            if(produtoPedido == null)
+            {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_ERROR, "Erro ao efetuar o pedido!", "Favor olhar o OUTPUT!"));
+                context.getExternalContext().getFlash().setKeepMessages(true);
+            
+                return "index?faces-redirect=true";
+            }
+            
+            pedido.addProdutoPedido(produtoPedido);
+        }
+        
+        PedidoDAO.save(pedido);
+        
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Compra concluída com sucesso!", "Obrigado por comprar conosco!"));
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Pedido efetuado com sucesso!", "Aguardamos o pagamento para dar continuidade! Obrigado por comprar conosco!"));
         context.getExternalContext().getFlash().setKeepMessages(true);
         
-        return "carrinho?faces-redirect=true";
-    }
-    
-    public void subtotal(){
+        carrinho = new ArrayList<>();
         
+        utils.Utilidades.salvaRegistroSessao("carrinho", carrinho);
+        
+        return "carrinho?faces-redirect=true";
     }
     
     public String salvarProduto()
@@ -227,5 +297,13 @@ public class ProdutoB {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
