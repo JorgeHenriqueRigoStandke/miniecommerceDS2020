@@ -268,6 +268,23 @@
     margin-top: -15%;
     margin-bottom: 5%;
 }
+
+#finalizarCompra{
+    text-align: right; 
+    right: 150px; 
+    position: relative;
+    top: -140px;
+}
+
+#formasDePagamento{
+    position: relative;
+    text-align: left; 
+    background-color: gray;
+    top: 50px;
+    width: 530px; 
+    margin-left: 30px;
+    height: 250px;
+}
 /*----------------------------- Final CSS Textos -----------------------------*/
 
 form .tabelaVisaoGeral{
