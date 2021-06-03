@@ -56,7 +56,19 @@
     height: 2.25vw;
     background: red;
     top: 70%;
-    left: 4%;
+    left: 5%;
+    font-size: 1.25vw;
+    color: #fff;
+}
+
+.btnComprarProduto{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: auto;
+    height: 2.25vw;
+    background: red;
+    top: 70%;
+    left: 6%;
     font-size: 1.25vw;
     color: #fff;
 }
@@ -168,7 +180,7 @@
     margin-right: 5%;
     left: 70%;
     top: 0;
-    margin-top: 20%;
+    margin-top: 5%;
 }
 
 .spinnerQtde{
@@ -184,14 +196,20 @@
 }
 
 .precoProduto{
-    font-size: 30px;
-    margin-left: 5%;
+    font-size: 50px;
+    margin-left: 8%;
     color: red;
 }
 
 .tituloProdutos{
     font-size: 30px;
+    margin-left: 8vw;
     color: white;
+}
+
+.comandosProdutos{
+    left: -20px;
+    right: 45px;
 }
 
 .textoIndex{
@@ -237,25 +255,19 @@
     font-size: 43px;
 }
 
-#cadeiraGamer{
+#nomeProdutos{
     margin-top: 3%;
     margin-left: 3%;
 }
 
-#placaVideo{
-    position: absolute;
+#coisinhaDoProduto{
+    position: relative;
+    align-content: center;
     text-align: center;
-    top: 9%;
-    left: 35%;
+    width: 100%;
+    margin-top: -15%;
+    margin-bottom: 5%;
 }
-
-#fonte{
-    position: absolute;
-    text-align: right;
-    top: 9%;
-    left: 70%;
-}
-
 /*----------------------------- Final CSS Textos -----------------------------*/
 
 form .tabelaVisaoGeral{
@@ -281,7 +293,6 @@ form .tabelaVisaoGeral{
     position: relative;
     background-color: black;
     padding: 5px;
-    top: -10px;
     margin: 10px 0px 0px 0px;
     color: white;
     bottom: 0;

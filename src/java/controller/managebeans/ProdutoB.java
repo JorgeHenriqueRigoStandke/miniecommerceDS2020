@@ -15,7 +15,7 @@ import model.dao.ProdutoDAO;
 import model.entity.Produto;
 import org.primefaces.model.file.UploadedFile;
 
-/**@author João Vitor Schmidt*/
+/**@author João Vitor Schmidt**/
 
 @Named(value = "produtoB")
 @RequestScoped
@@ -33,6 +33,13 @@ public class ProdutoB {
     private UploadedFile imagemProduto;
     private String descricao;
     private String quant;
+    private Produto produto;
+    
+    public String getPaginaDetalhesProdutos(Produto produto) {
+        this.setProduto(produto);
+        utils.Utilidades.salvaRegistroSessao("produto", produto);
+        return "detalhesProduto";
+    }
     
     public List<Produto> getTodosDados()
     {
@@ -51,28 +58,52 @@ public class ProdutoB {
     
     public void adiocionarCarrinho(Produto p)
     {
-        getCarrinho().add(p);
+        if(utils.Utilidades.verificaExisteRegistroSessao("produto"))
+        {
+            produto = (Produto) utils.Utilidades.recuperaRegistroSessao("produto");
+        }
+        
+        getCarrinho().add(produto);
+        
+        utils.Utilidades.removerRegistroSessao("produto");
+        
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso", "O produto foi adicionado ao carrinho."));
         context.getExternalContext().getFlash().setKeepMessages(true);
          
-        
-        
         utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
-    }
-    
-    public void concluirCompra()
-    {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Compra concluída com sucesso!", "Obrigado por comprar conosco!"));
-        context.getExternalContext().getFlash().setKeepMessages(true);
     }
     
     public String comprarAgora(Produto p)
     {
+        if(utils.Utilidades.verificaExisteRegistroSessao("produto"))
+        {
+            produto = (Produto) utils.Utilidades.recuperaRegistroSessao("produto");
+        }
+        
+        getCarrinho().add(produto);
+        
+        utils.Utilidades.removerRegistroSessao("produto");
+        
+        utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
+        
+        return "carrinho?faces-redirect=true";
+    }
+    
+    public String comprarAgoraLista(Produto p)
+    {
         getCarrinho().add(p);
         
         utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
+        
+        return "carrinho?faces-redirect=true";
+    }
+    
+    public String concluirCompra()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Compra concluída com sucesso!", "Obrigado por comprar conosco!"));
+        context.getExternalContext().getFlash().setKeepMessages(true);
         
         return "carrinho?faces-redirect=true";
     }
@@ -188,5 +219,13 @@ public class ProdutoB {
 
     public void setQuant(String quant) {
         this.quant = quant;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }

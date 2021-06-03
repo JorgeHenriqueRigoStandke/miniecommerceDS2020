@@ -6,8 +6,9 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <p style="text-align: center; color: red; font-size: 30px;">Seus Produtos</p>
-        <p:dataTable var="dados" value="#{produtoB.carrinho}">
+        <h:form>
+            <p style="text-align: center; color: red; font-size: 30px;">Seus Produtos</p>
+            <p:dataTable var="dados" value="#{produtoB.carrinho}">
                 <p:column headerText="Produtos" class="tabelaCarrinho">
                     <h:outputText value="#{dados.nome}"/>
                 </p:column>
@@ -23,17 +24,19 @@
                 <p:column headerText="Ações" class="tabelaCarrinho">
                     <p:commandLink value="Excluir o produto"/>
                 </p:column>
-        </p:dataTable>
-        
-        <div style="text-align: left;">
-            <p style="color: red; font-size: 30px; margin-left: 50px;">Formas de Pagamento</p>
-        </div>
-        
-        <div style="text-align: right; margin-right: 100px;">
-            <p style="color: red; font-size: 30px; margin-left: 50px;">Subtotal: R$ </p>
-            <p style="color: red; font-size: 30px; margin-left: 50px;">Total: R$</p>
-            <p:commandButton value="Concluir a compra" class="btnVerProduto" action="#{produtoB.concluirCompra()}"/>
-        </div>
+            </p:dataTable>
+
+            <div style="text-align: left; background-color: gray; width: 500px; margin-left: 10px; margin-bottom: 15%;">
+                <p style="color: red; font-size: 30px; margin-left: 80px;">Formas de Pagamento</p>
+                <p:graphicImage name="imagens/formas de pagamento.png" alt="formas de pagamento" style="width: 500px; margin-left: 8px;"/>
+            </div>
+
+            <div style="text-align: right; margin-right: 100px; margin-top: -35%; position: relative;">
+                <p style="color: red; font-size: 30px; margin-left: 50px;">Subtotal: R$ </p>
+                <p style="color: red; font-size: 30px; margin-left: 50px;">Total: R$</p>
+                <p:commandButton value="Concluir a compra" class="btnVerProduto" action="#{produtoB.concluirCompra()}"/>
+            </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>

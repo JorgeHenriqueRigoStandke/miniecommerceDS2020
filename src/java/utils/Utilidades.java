@@ -27,4 +27,9 @@ public class Utilidades {
     {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(registro);
     }
+    
+    public static void removerRegistroSessao(String registro)
+    {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(registro);
+    }
 }

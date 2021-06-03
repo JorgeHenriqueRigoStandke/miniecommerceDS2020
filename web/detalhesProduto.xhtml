@@ -7,12 +7,12 @@
 
     <ui:define name="content">
         <h:form>
-            <p class="textoProduto">#{produto.nome}</p>
-             <p:graphicImage name="imgProdutos/#{produto.foto}" alt="logo"/>
+            <p class="textoProduto">#{produtoB.produto.nome}</p>
+             <p:graphicImage name="imgProdutos/#{produtoB.produto.foto}" alt="logo" style="width: 550px; height: 300px; margin-left: 5%;"/>
             <p class="textoProduto">Detalhes:</p>
-            <h:outputText class="detalhesProduto" value="#{produto.descricao}" />                           
+            <h:outputText class="detalhesProduto" value="#{produtoB.produto.descricao}" />                           
             <div id="finalizacaoProduto">
-                <p class="textoProduto">R$ #{produto.preco}</p>
+                <p class="textoProduto">R$ #{produtoB.produto.preco}</p>
                 <p class="detalhesProduto">R$20,00 de frete. Entrega estimada 5 - 10 de Maio</p>
                 <h:panelGrid columns="1">
                     <p class="detalhesProduto" style="margin-left: 60%">Quantidade:</p>
@@ -20,10 +20,10 @@
                     </p:spinner> 
                 </h:panelGrid>
                 <br/>
-                <p:commandButton value="Adicionar ao Carrinho" class="btnVerProduto" action="#{produtoB.adiocionarCarrinho(produto)}"/>
+                <p:commandButton value="Adicionar ao Carrinho" class="btnVerProduto" action="#{produtoB.adiocionarCarrinho(produtoB.produto)}"/>
                 <br/>
                 <br/>
-                <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.comprarAgora(produto)}"/>
+                <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.comprarAgora(produtoB.produto)}"/>
             </div>
         </h:form>
     </ui:define>

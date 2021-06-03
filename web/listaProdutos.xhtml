@@ -9,12 +9,16 @@
         <h:form>
 
             <ui:repeat value="#{produtoB.todosDados}" var="produto">
-                <div id="cadeiraGamer">
-                    <p:graphicImage name="imgProdutos/#{produto.foto}" alt="logo"/>
-                    <p class="tituloProdutos"><h:outputText value="#{produto.nome}"/></p>
-                    <p class="precoProduto"><h:outputText value="R$ #{produto.preco}"/></p>
-                    <p:commandButton value="Ver o produto" style="position: relative; font-family: 'Fira Sans', sans-serif; width: auto;  height: 2.25vw; background: red; font-size: 1.25vw; color: #fff; right: 29%;" class="btnVerProduto" action="#{paginasMB.getPaginaDetalhesProduto()}"/>
-                    <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.comprarAgora(produto)}"/>
+                <div id="nomeProdutos">
+                    <p:graphicImage name="imgProdutos/#{produto.foto}" alt="logo" style="width: 550px; height: 300px;"/>
+                    <div id="coisinhaDoProduto">
+                        <p class="tituloProdutos"><h:outputText value="#{produto.nome}"/></p>
+                        <p class="precoProduto"><h:outputText value="R$ #{produto.preco}"/></p>
+                        <div class="comandosProdutos">
+                            <p:commandButton value="Ver o produto" style="position: relative; font-family: 'Fira Sans', sans-serif; width: auto;  height: 2.25vw; background: red; font-size: 1.25vw; color: #fff; right: 29%;" class="btnVerProduto" action="#{produtoB.getPaginaDetalhesProdutos(produto)}"/>
+                            <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.comprarAgoraLista(produto)}"/>
+                        </div>
+                    </div>
                 </div>
             </ui:repeat>
 
