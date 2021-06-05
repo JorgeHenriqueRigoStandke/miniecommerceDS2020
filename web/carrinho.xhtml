@@ -15,9 +15,6 @@
                 <p:column headerText="Valor Unitário" class="tabelaCarrinho">
                     <h:outputText value="R$ #{dados.preco}"/>
                 </p:column>
-                <p:column headerText="Qtd" class="tabelaCarrinho">
-                    <h:outputText value="#{produtoB.quant}"/>
-                </p:column>
                 <p:column headerText="Descrição dos Produtos" class="tabelaCarrinho">
                     <h:outputText value="#{dados.descricao}"/>
                 </p:column>
@@ -32,7 +29,7 @@
             </div>
 
             <div id="finalizarCompra">
-                <p style="color: red; font-size: 30px; margin-left: 50px;">Total: R$</p>
+                <h:outputText style="color: red; font-size: 30px; margin-left: 50px;" value="#{produtoB.precototal}" />
                 <p:commandButton value="Concluir a compra" class="btnVerProduto" action="#{produtoB.concluirCompra()}"/>
             </div>
         </h:form>

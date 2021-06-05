@@ -44,6 +44,7 @@ public class ProdutoB {
     private String quant;
     private Produto produto;
     private Usuario usuario;
+    private double precototal;
     
     public String getPaginaDetalhesProdutos(Produto produto) {
         this.setProduto(produto);
@@ -71,21 +72,27 @@ public class ProdutoB {
         }
     }
     
-    public String adiocionarCarrinho(Produto p)
+    public String adiocionarCarrinho(Produto p,int qntd,double precoproduto)
     {
+        precototal = 0;
+        if (qntd == 0 || qntd < 0){
+            qntd = 1;
+        }
         if(utils.Utilidades.verificaExisteRegistroSessao("produto"))
         {
             produto = (Produto) utils.Utilidades.recuperaRegistroSessao("produto");
         }
-        
-        getCarrinho().add(produto);
-        
+        for (int i = 0; i < qntd ; i++) {
+            getCarrinho().add(produto);
+            precototal = precototal + precoproduto ;
+            System.out.println(precototal);
+        }
         utils.Utilidades.removerRegistroSessao("produto");
          
         utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
         
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso", "O produto foi adicionado ao carrinho."));
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso ",+qntd+ " produto(s) foram adicionado(s) ao carrinho."));
         context.getExternalContext().getFlash().setKeepMessages(true);
         
         return "listaProdutos?faces-redirect=true";
@@ -127,16 +134,11 @@ public class ProdutoB {
             return "index?faces-redirect=true";
         }
         
-        double valorTotal = 0;
         
-        for (Produto produtoCarrinho : carrinho)
-        {
-            valorTotal += produtoCarrinho.getPreco();
-        }
         
         Pedido pedido = new Pedido();
         pedido.setUsuario(usuario);
-        pedido.setValorTotal(valorTotal);
+        pedido.setValorTotal(precototal);
         
         pedido = PedidoDAO.save(pedido);
         
@@ -305,5 +307,13 @@ public class ProdutoB {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public double getPrecototal() {
+        return precototal;
+    }
+
+    public void setPrecototal(double precototal) {
+        this.precototal = precototal;
     }
 }

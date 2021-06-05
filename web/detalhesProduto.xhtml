@@ -21,7 +21,7 @@
                     </p:spinner> 
                 </h:panelGrid>
                 <br/>
-                <p:commandButton value="Adicionar ao Carrinho" class="btnVerProduto" action="#{produtoB.adiocionarCarrinho(produtoB.produto)}"/>
+                <p:commandButton value="Adicionar ao Carrinho" class="btnVerProduto" action="#{produtoB.adiocionarCarrinho(produtoB.produto,produtoB.quant,produtoB.produto.preco)}"/>
                 <br/>
                 <br/>
                 <p:commandButton value="Comprar Agora" class="btnVerProduto" action="#{produtoB.comprarAgora(produtoB.produto)}"/>
