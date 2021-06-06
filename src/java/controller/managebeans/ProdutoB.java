@@ -44,7 +44,7 @@ public class ProdutoB {
     private String quant;
     private Produto produto;
     private Usuario usuario;
-    private double precototal;
+    private Double precototal;
     
     public String getPaginaDetalhesProdutos(Produto produto) {
         this.setProduto(produto);
@@ -72,9 +72,9 @@ public class ProdutoB {
         }
     }
     
-    public String adiocionarCarrinho(Produto p,int qntd,double precoproduto)
+    public String adiocionarCarrinho(Produto p,int qntd)
     {
-        precototal = 0;
+        this.precototal = 0.0;
         if (qntd == 0 || qntd < 0){
             qntd = 1;
         }
@@ -84,7 +84,7 @@ public class ProdutoB {
         }
         for (int i = 0; i < qntd ; i++) {
             getCarrinho().add(produto);
-            precototal = precototal + precoproduto ;
+            precototal = precototal + produto.getPreco();
             System.out.println(precototal);
         }
         utils.Utilidades.removerRegistroSessao("produto");
@@ -125,6 +125,8 @@ public class ProdutoB {
     
     public String concluirCompra()
     {
+        usuario = getUsuario();
+        
         if(carrinho.isEmpty())
         {
             FacesContext context = FacesContext.getCurrentInstance();
@@ -134,11 +136,16 @@ public class ProdutoB {
             return "index?faces-redirect=true";
         }
         
+        double valorTotal = 0;
         
+        for (Produto produtoCarrinho : carrinho)
+        {
+            valorTotal += produtoCarrinho.getPreco();
+        }
         
         Pedido pedido = new Pedido();
         pedido.setUsuario(usuario);
-        pedido.setValorTotal(precototal);
+        pedido.setValorTotal(valorTotal);
         
         pedido = PedidoDAO.save(pedido);
         
@@ -309,11 +316,11 @@ public class ProdutoB {
         this.usuario = usuario;
     }
 
-    public double getPrecototal() {
+    public Double getPrecototal() {
         return precototal;
     }
 
-    public void setPrecototal(double precototal) {
+    public void setPrecototal(Double precototal) {
         this.precototal = precototal;
     }
 }
