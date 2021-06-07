@@ -29,7 +29,7 @@
             </div>
 
             <div id="finalizarCompra">
-                <h:outputText style="color: red; font-size: 30px; margin-left: 50px;" value="#{produtoB.precototal}" />
+                <p style="color: red; font-size: 30px; margin-left: 50px;">Total: R$ #{dados.precototal}</p>
                 <p:commandButton value="Concluir a compra" class="btnVerProduto" action="#{produtoB.concluirCompra()}"/>
             </div>
         </h:form>

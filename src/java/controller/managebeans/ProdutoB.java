@@ -70,6 +70,10 @@ public class ProdutoB {
         {
             carrinho = (List<Produto>) utils.Utilidades.recuperaRegistroSessao("carrinho");
         }
+        
+        if(utils.Utilidades.verificaExisteRegistroSessao("usuario")){
+            usuario = (Usuario) utils.Utilidades.recuperaRegistroSessao("usuario");
+        }
     }
     
     public String adiocionarCarrinho(Produto p,int qntd)
@@ -85,15 +89,15 @@ public class ProdutoB {
         for (int i = 0; i < qntd ; i++) {
             getCarrinho().add(produto);
             precototal = precototal + produto.getPreco();
-            System.out.println(precototal);
         }
         utils.Utilidades.removerRegistroSessao("produto");
          
         utils.Utilidades.salvaRegistroSessao("carrinho", getCarrinho());
         
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso ",+qntd+ " produto(s) foram adicionado(s) ao carrinho."));
+        context.addMessage(null, new FacesMessage (FacesMessage.SEVERITY_INFO, "Sucesso ", + qntd + " - " + produto.getNome() + "(s) foi adicionado(s) ao carrinho."));
         context.getExternalContext().getFlash().setKeepMessages(true);
+
         
         return "listaProdutos?faces-redirect=true";
     }
@@ -124,9 +128,7 @@ public class ProdutoB {
     }
     
     public String concluirCompra()
-    {
-        usuario = getUsuario();
-        
+    {   
         if(carrinho.isEmpty())
         {
             FacesContext context = FacesContext.getCurrentInstance();
