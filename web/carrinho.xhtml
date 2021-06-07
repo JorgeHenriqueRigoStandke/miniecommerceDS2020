@@ -18,9 +18,6 @@
                 <p:column headerText="Descrição dos Produtos" class="tabelaCarrinho">
                     <h:outputText value="#{dados.descricao}"/>
                 </p:column>
-                <p:column headerText="Ações" class="tabelaCarrinho">
-                    <p:commandLink value="Remover o produto"/>
-                </p:column>
             </p:dataTable>
 
             <div id="formasDePagamento">
@@ -29,7 +26,7 @@
             </div>
 
             <div id="finalizarCompra">
-                <h:outputText style="color: red; font-size: 30px; margin-left: 50px;" value="#{produtoB.precototal}" />
+                <h:outputText style="color: red; font-size: 30px; margin-left: 50px;" value="Preço total: R$ #{paginasMB.getPrecototal()}" />
                 <p:commandButton value="Concluir a compra" class="btnVerProduto" action="#{produtoB.concluirCompra()}"/>
             </div>
         </h:form>
