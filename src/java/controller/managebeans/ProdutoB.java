@@ -79,8 +79,7 @@ public class ProdutoB {
         }
         for (int i = 0; i < qntd; i++) {
             getCarrinho().add(produto);
-            precototal = precototal + produto.getPreco();
-            PaginasMB.somarPrecos(precototal);
+            PaginasMB.somarPrecos(produto.getPreco());
         }
         utils.Utilidades.removerRegistroSessao("produto");
 
@@ -175,6 +174,7 @@ public class ProdutoB {
 
         utils.Utilidades.salvaRegistroSessao("carrinho", carrinho);
         PaginasMB.setPrecototal(0.0);
+        precototal = 0.0;
         return "carrinho?faces-redirect=true";
     }
 

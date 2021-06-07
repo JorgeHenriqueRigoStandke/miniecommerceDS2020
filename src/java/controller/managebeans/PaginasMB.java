@@ -84,5 +84,6 @@ public class PaginasMB {
         System.out.println("valor 1: "+valor1+" - "+ valor);
         setPrecototal(valor1);
         System.out.println(valor1);
+        valor1 = 0.0;
     }
 }
