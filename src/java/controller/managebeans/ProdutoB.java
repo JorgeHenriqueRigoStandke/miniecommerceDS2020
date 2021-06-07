@@ -67,6 +67,10 @@ public class ProdutoB {
         if (utils.Utilidades.verificaExisteRegistroSessao("carrinho")) {
             carrinho = (List<Produto>) utils.Utilidades.recuperaRegistroSessao("carrinho");
         }
+        
+        if(utils.Utilidades.verificaExisteRegistroSessao("usuario")){
+            usuario = (Usuario) utils.Utilidades.recuperaRegistroSessao("usuario");
+        }
     }
 
     public String adiocionarCarrinho(Produto p, int qntd) {

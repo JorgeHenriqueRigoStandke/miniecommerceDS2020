@@ -13,7 +13,7 @@
                     <h:outputText value="#{dados.id}"/>
                 </p:column>
                 <p:column headerText="Usuário" class="tabelaVisaoGeral">
-                    <h:outputText value="#{dados.usuario.email}"/>
+                    <h:outputText value="#{dados.usuario.id} - #{dados.usuario.email}"/>
                 </p:column>
                 <p:column headerText="Produtos no Pedido" class="tabelaVisaoGeral">
                     <p:dataList value="#{dados.produtosPedido}" var="produtosPedidos">
