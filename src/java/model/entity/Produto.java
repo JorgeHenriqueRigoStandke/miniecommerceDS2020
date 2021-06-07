@@ -89,4 +89,5 @@ public class Produto implements Serializable
     public void setQuant(String quant) {
         this.quant = quant;
     }
+    
 }

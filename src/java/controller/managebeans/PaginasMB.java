@@ -10,7 +10,7 @@ public class PaginasMB {
 
     public PaginasMB() {
     }
-    
+    private static Double precototal = 0.0;
     private int produto;
 
     public int getProduto() {
@@ -69,4 +69,20 @@ public class PaginasMB {
         return "funcoesAdmin?faces-redirect-true";
     }
 
+    public static Double getPrecototal() {
+        return precototal;
+    }
+
+    public static void setPrecototal(Double aPrecototal) {
+        precototal = aPrecototal;
+    }
+    public static void somarPrecos(Double valor){
+        Double valor1;       
+        valor1 = getPrecototal();
+        System.out.println("RTESTEWAJDAJSH"+valor1+" - "+ valor);
+        valor1 = valor1 + valor;
+        System.out.println("valor 1: "+valor1+" - "+ valor);
+        setPrecototal(valor1);
+        System.out.println(valor1);
+    }
 }
